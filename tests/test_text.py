@@ -24,6 +24,12 @@ class CapitalizeWordsTest(unittest.TestCase):
     def test_empty_string_stays_empty(self):
         self.assertEqual(capitalize_words(""), "")
 
+    def test_digraph_first_letter_uses_titlecase(self):
+        self.assertEqual(capitalize_words("ǆungla"), "ǅungla")
+
+    def test_ligature_first_letter_uses_titlecase(self):
+        self.assertEqual(capitalize_words("ﬁsh"), "Fish")
+
 
 if __name__ == "__main__":
     unittest.main()
