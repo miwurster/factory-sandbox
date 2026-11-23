@@ -18,6 +18,9 @@ class CapitalizeWordsTest(unittest.TestCase):
     def test_keeps_existing_capitals(self):
         self.assertEqual(capitalize_words("NASA rocks"), "NASA Rocks")
 
+    def test_titlecases_first_letter(self):
+        self.assertEqual(capitalize_words("ǆungla"), "ǅungla")
+
     def test_keeps_spacing_between_words(self):
         self.assertEqual(capitalize_words("two  spaces"), "Two  Spaces")
 
