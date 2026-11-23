@@ -24,6 +24,9 @@ class CapitalizeWordsTest(unittest.TestCase):
     def test_empty_string_stays_empty(self):
         self.assertEqual(capitalize_words(""), "")
 
+    def test_titlecases_first_character(self):
+        self.assertEqual(capitalize_words("ǆep ﬁsh"), "ǅep Fish")
+
 
 if __name__ == "__main__":
     unittest.main()
