@@ -32,6 +32,9 @@ class SlugifyTest(unittest.TestCase):
     def test_drops_non_ascii_letters(self):
         self.assertEqual(slugify("Café Münster"), "caf-m-nster")
 
+    def test_drops_non_ascii_letters_that_lowercase_to_ascii(self):
+        self.assertEqual(slugify("Kelvin İstanbul"), "elvin-stanbul")
+
 
 if __name__ == "__main__":
     unittest.main()
