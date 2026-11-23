@@ -21,6 +21,9 @@ class CapitalizeWordsTest(unittest.TestCase):
     def test_keeps_spacing_between_words(self):
         self.assertEqual(capitalize_words("two  spaces"), "Two  Spaces")
 
+    def test_titlecases_first_letter(self):
+        self.assertEqual(capitalize_words("ﬁsh ǆungla ßen"), "Fish ǅungla Ssen")
+
     def test_empty_string_stays_empty(self):
         self.assertEqual(capitalize_words(""), "")
 
