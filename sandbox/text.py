@@ -7,5 +7,5 @@ def capitalize_words(text: str) -> str:
 
 
 def is_palindrome(text: str) -> bool:
-    kept = [char.lower() for char in text if char.isalnum()]
+    kept = [char.lower() for char in text if char.isalpha() or char.isdecimal()]
     return kept == kept[::-1]

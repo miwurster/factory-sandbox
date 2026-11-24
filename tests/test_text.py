@@ -29,6 +29,9 @@ class IsPalindromeTest(unittest.TestCase):
     def test_empty_string_is_a_palindrome(self):
         self.assertTrue(is_palindrome(""))
 
+    def test_fraction_is_ignored_like_punctuation(self):
+        self.assertTrue(is_palindrome("½a"))
+
 
 if __name__ == "__main__":
     unittest.main()
