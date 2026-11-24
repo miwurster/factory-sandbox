@@ -25,6 +25,12 @@ class SplitWordsTest(unittest.TestCase):
     def test_splits_at_hyphens_and_runs_of_whitespace(self):
         self.assertEqual(split_words("Jean-Paul  Sartre"), ["Jean", "Paul", "Sartre"])
 
+    def test_splits_at_unicode_hyphen(self):
+        self.assertEqual(split_words("Jean\N{HYPHEN}Paul Sartre"), ["Jean", "Paul", "Sartre"])
+
+    def test_splits_at_non_breaking_hyphen(self):
+        self.assertEqual(split_words("Jean\N{NON-BREAKING HYPHEN}Paul Sartre"), ["Jean", "Paul", "Sartre"])
+
     def test_separators_only_give_no_words(self):
         self.assertEqual(split_words("  - "), [])
 

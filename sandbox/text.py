@@ -10,7 +10,7 @@ def capitalize_words(text: str) -> str:
 
 
 def split_words(text: str) -> list[str]:
-    return [word for word in re.split(r"[\s-]+", text) if word]
+    return [word for word in re.split(r"[\s\-\N{HYPHEN}\N{NON-BREAKING HYPHEN}]+", text) if word]
 
 
 def initials(name: str) -> str:
