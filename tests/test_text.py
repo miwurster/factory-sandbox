@@ -32,6 +32,12 @@ class IsPalindromeTest(unittest.TestCase):
     def test_fraction_is_ignored_like_punctuation(self):
         self.assertTrue(is_palindrome("½a"))
 
+    def test_final_sigma_matches_capital_sigma(self):
+        self.assertTrue(is_palindrome("Σας"))
+
+    def test_sharp_s_matches_double_capital_s(self):
+        self.assertTrue(is_palindrome("SSaß"))
+
 
 if __name__ == "__main__":
     unittest.main()
