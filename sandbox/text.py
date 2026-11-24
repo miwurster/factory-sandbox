@@ -1,9 +1,11 @@
 import re
 
+_WORD = re.compile(r"\S+")
+
 
 def reverse_words(text: str) -> str:
-    words = reversed(re.findall(r"\S+", text))
-    return re.sub(r"\S+", lambda _: next(words), text)
+    words = reversed(_WORD.findall(text))
+    return _WORD.sub(lambda _: next(words), text)
 
 
 def capitalize_words(text: str) -> str:
