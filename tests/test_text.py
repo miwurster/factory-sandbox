@@ -1,6 +1,7 @@
 import unittest
+from unittest.mock import patch
 
-from sandbox.text import capitalize_words, reverse_words, split_words
+from sandbox.text import capitalize_words, initials, reverse_words, split_words
 
 
 class ReverseWordsTest(unittest.TestCase):
@@ -30,6 +31,22 @@ class SplitWordsTest(unittest.TestCase):
 
     def test_empty_string_gives_no_words(self):
         self.assertEqual(split_words(""), [])
+
+
+class InitialsTest(unittest.TestCase):
+    def test_first_letter_of_each_word(self):
+        self.assertEqual(initials("Ada Lovelace"), "AL")
+
+    def test_uppercases_and_splits_at_hyphens(self):
+        self.assertEqual(initials("jean-paul sartre"), "JPS")
+
+    def test_empty_name_gives_empty_initials(self):
+        self.assertEqual(initials(""), "")
+
+    def test_finds_the_words_with_split_words(self):
+        with patch("sandbox.text.split_words", return_value=["x", "y"]) as split:
+            self.assertEqual(initials("anything"), "XY")
+        split.assert_called_once_with("anything")
 
 
 if __name__ == "__main__":
