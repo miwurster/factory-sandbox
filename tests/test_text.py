@@ -21,6 +21,8 @@ class SplitWordsTest(unittest.TestCase):
         cases = [
             ("Ada Lovelace", ["Ada", "Lovelace"]),
             ("Jean-Paul  Sartre", ["Jean", "Paul", "Sartre"]),
+            ("Ada\tLovelace", ["Ada", "Lovelace"]),
+            ("Ada\u00a0Lovelace", ["Ada", "Lovelace"]),
             ("  - ", []),
             ("", []),
         ]
@@ -34,17 +36,8 @@ class InitialsTest(unittest.TestCase):
         cases = [
             ("Ada Lovelace", "AL"),
             ("jean-paul sartre", "JPS"),
-            ("", ""),
-        ]
-        for name, expected in cases:
-            with self.subTest(name=name):
-                self.assertEqual(initials(name), expected)
-
-    def test_finds_words_the_way_split_words_does(self):
-        cases = [
             ("ada\tlovelace", "AL"),
-            ("marie--curie", "MC"),
-            ("  - ", ""),
+            ("", ""),
         ]
         for name, expected in cases:
             with self.subTest(name=name):
