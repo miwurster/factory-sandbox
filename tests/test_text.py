@@ -1,6 +1,6 @@
 import unittest
 
-from sandbox.text import capitalize_words, reverse_words, split_words
+from sandbox.text import capitalize_words, initials, reverse_words, split_words
 
 
 class ReverseWordsTest(unittest.TestCase):
@@ -27,6 +27,28 @@ class SplitWordsTest(unittest.TestCase):
         for text, expected in cases:
             with self.subTest(text=text):
                 self.assertEqual(split_words(text), expected)
+
+
+class InitialsTest(unittest.TestCase):
+    def test_returns_the_uppercased_first_letter_of_each_word(self):
+        cases = [
+            ("Ada Lovelace", "AL"),
+            ("jean-paul sartre", "JPS"),
+            ("", ""),
+        ]
+        for name, expected in cases:
+            with self.subTest(name=name):
+                self.assertEqual(initials(name), expected)
+
+    def test_finds_words_the_way_split_words_does(self):
+        cases = [
+            ("ada\tlovelace", "AL"),
+            ("marie--curie", "MC"),
+            ("  - ", ""),
+        ]
+        for name, expected in cases:
+            with self.subTest(name=name):
+                self.assertEqual(initials(name), expected)
 
 
 if __name__ == "__main__":
