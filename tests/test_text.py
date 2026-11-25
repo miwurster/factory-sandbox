@@ -1,6 +1,6 @@
 import unittest
 
-from sandbox.text import capitalize_words, reverse_words, split_words
+from sandbox.text import capitalize_words, initials, reverse_words, split_words
 
 
 class ReverseWordsTest(unittest.TestCase):
@@ -30,6 +30,17 @@ class SplitWordsTest(unittest.TestCase):
 
     def test_empty_text_gives_no_words(self):
         self.assertEqual(split_words(""), [])
+
+
+class InitialsTest(unittest.TestCase):
+    def test_takes_the_first_letter_of_each_word(self):
+        self.assertEqual(initials("Ada Lovelace"), "AL")
+
+    def test_uppercases_and_counts_hyphenated_parts_as_words(self):
+        self.assertEqual(initials("jean-paul sartre"), "JPS")
+
+    def test_empty_name_has_no_initials(self):
+        self.assertEqual(initials(""), "")
 
 
 if __name__ == "__main__":
