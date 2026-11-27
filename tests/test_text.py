@@ -34,6 +34,7 @@ class InitialsTest(unittest.TestCase):
         cases = [
             ("Ada Lovelace", "AL"),
             ("jean-paul sartre", "JPS"),
+            ("E\u0301mile Zola", "\u00c9Z"),
             ("", ""),
         ]
         for name, expected in cases:

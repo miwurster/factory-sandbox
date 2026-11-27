@@ -1,4 +1,5 @@
 import re
+import unicodedata
 
 
 def split_words(text: str) -> list[str]:
@@ -6,7 +7,7 @@ def split_words(text: str) -> list[str]:
 
 
 def initials(name: str) -> str:
-    return "".join(word[0].upper() for word in split_words(name))
+    return "".join(word[0].upper() for word in split_words(unicodedata.normalize("NFC", name)))
 
 
 def reverse_words(text: str) -> str:
