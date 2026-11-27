@@ -1,6 +1,6 @@
 import unittest
 
-from sandbox.text import capitalize_words, reverse_words
+from sandbox.text import capitalize_words, reverse_words, split_words
 
 
 class ReverseWordsTest(unittest.TestCase):
@@ -14,6 +14,19 @@ class ReverseWordsTest(unittest.TestCase):
 class CapitalizeWordsTest(unittest.TestCase):
     def test_capitalizes_each_word(self):
         self.assertEqual(capitalize_words("hello big world"), "Hello Big World")
+
+
+class SplitWordsTest(unittest.TestCase):
+    def test_splits_at_whitespace_and_hyphens_and_drops_empty_words(self):
+        cases = [
+            ("Ada Lovelace", ["Ada", "Lovelace"]),
+            ("Jean-Paul  Sartre", ["Jean", "Paul", "Sartre"]),
+            ("  - ", []),
+            ("", []),
+        ]
+        for text, expected in cases:
+            with self.subTest(text=text):
+                self.assertEqual(split_words(text), expected)
 
 
 if __name__ == "__main__":
