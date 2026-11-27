@@ -21,6 +21,7 @@ class SplitWordsTest(unittest.TestCase):
         cases = [
             ("Ada Lovelace", ["Ada", "Lovelace"]),
             ("Jean-Paul  Sartre", ["Jean", "Paul", "Sartre"]),
+            ("Ada\tLovelace\nByron", ["Ada", "Lovelace", "Byron"]),
             ("  - ", []),
             ("", []),
         ]
